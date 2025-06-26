@@ -1,0 +1,34 @@
+This document defines the 13-bit instruction format for a 4-bit nanoprocessor, designed for efficient arithmetic, data movement, and control operations. Enhanced with CMP (compare), AND, and OR instructions, the architecture supports robust data manipulation and decision-making in a compact framework.
+
+Instruction Word Structure (13 bits)
+
+| Bits [12:10] | Bits [9:7] | Bits [6:4] | Bits [3:0] |
+|--------------|------------|------------|--------------------------|
+| OPCODE       | DEST       | SRC        | Immediate / Control / Unused |
+
+- OPCODE (Bits 12 to 10): Specifies the operation to be executed.
+- DEST (Bits 9 to 7): Destination register (3 bits, selects R0–R7).
+- SRC (Bits 6 to 4): Source register (3 bits, selects R0–R7).
+- Remaining Bits (Bits 3 to 0): Used for immediate values, jump addresses, or left unused, depending on the instruction.
+
+Opcode Definitions
+
+| Opcode | Mnemonic | Operation Description                        |
+|--------|----------|----------------------------------------------|
+| 000    | ADD      | DEST ← DEST + SRC                            |
+| 001    | NEG      | DEST ← -DEST                                 |
+| 010    | MOVI     | DEST ← Immediate (Immediate in last 7 bits)  |
+| 011    | JZR      | Jump if Zero: if DEST == 0, PC ← address     |
+| 100    | CMP      | Compare: SET FLAGS (DEST - SRC)              |
+| 101    | AND      | DEST ← DEST & SRC                            |
+| 110    | OR       | DEST ← DEST | SRC                            |
+| 111    | Reserved | For future/extended instructions             |
+
+Instruction Examples
+
+- 0101110001010: MOVI R7, 10 (R7 ← 0xA)
+- 1001110110000: CMP R7, R3 (Compare R7 and R3)
+- 1010010100000: AND R1, R2 (R1 ← R1 & R2)
+- 1100010100000: OR R1, R2 (R1 ← R1 | R2)
+
+This instruction format enables efficient operation for a 4-bit nanoprocessor, supporting versatile control and data processing applications.
