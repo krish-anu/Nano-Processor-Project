@@ -88,7 +88,7 @@ To increase functionality, the instruction format was upgraded to 13 bits, enabl
 
 ## Future Work
 
-- Add subtraction, shift, and load/store instructions
+- shift, and load/store instructions
 - Include memory interfacing
 - Implement input/output handling
 - Extend instruction width for larger programs
